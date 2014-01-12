@@ -1,0 +1,40 @@
+<configuration scan="true" debug="false">
+<!-- PROPERTY -->
+	<property name="LOG_HOME" value="E:\netty3.6\NGAVLHttpServer"/>
+		
+<!-- APPENDER -->
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>logFile.log</file>
+		<!-- <file>${LOG_HOME}/logFile.log</file> -->
+		<encoder>
+    		<pattern>%date %level [%thread] %logger{100} [%file:%line] %msg%n</pattern>
+    	</encoder>
+  	</appender>
+
+  	<appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	  		<fileNamePattern>logFile.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+	  		<maxHistory>30</maxHistory>
+  		</rollingPolicy>
+  		<encoder>
+      		<pattern>%date %level [%thread] %logger{100} [%file:%line] %msg%n</pattern>
+    	</encoder>
+  	</appender>
+
+  	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    	<encoder>
+      		<pattern>%date %level [%thread] %logger{100} [%file:%line] %msg%n</pattern>
+    	</encoder>
+  	</appender>
+
+<!-- LOGGER -->  
+	<!-- <logger name="com.wini.octal.pipe" level="info" additivity="true">
+    	<appender-ref ref="FILE" />
+  	</logger> -->
+
+<!-- ROOT --> 
+  	<root level="debug">
+    	<appender-ref ref="STDOUT" />
+    	<appender-ref ref="ROLLINGFILE" />
+  	</root>
+</configuration>
