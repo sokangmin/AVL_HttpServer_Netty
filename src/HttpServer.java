@@ -49,6 +49,7 @@ public class HttpServer {
         // Enable TCP_NODELAY to handle pipelined requests without latency.
         bootstrap.setOption("child.tcpNoDelay", true);
         bootstrap.setOption("child.keepAlive", false);
+        bootstrap.setOption("child.soLinger:, 2);
 
         // Set up the event pipeline factory.
         /*bootstrap.setPipelineFactory(new HttpSnoopServerPipelineFactory());*/
